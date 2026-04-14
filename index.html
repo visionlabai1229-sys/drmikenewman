@@ -838,6 +838,208 @@
       color: #8a9e9a;
     }
 
+    /* Packages Section */
+    .packages {
+      background: var(--white);
+      position: relative;
+    }
+
+    .packages-sub-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .appointments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(74,124,111,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--sage-light));
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(74,124,111,0.12), 0 4px 12px rgba(74,124,111,0.08);
+    }
+
+    .package-card:hover::before { opacity: 1; }
+
+    .appt-card {
+      background: var(--mist);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(74,124,111,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .appt-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--warm), #d4896a);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .appt-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(192,122,90,0.12), 0 4px 12px rgba(192,122,90,0.08);
+    }
+
+    .appt-card:hover::before { opacity: 1; }
+
+    .package-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(74,124,111,0.12), rgba(74,124,111,0.06));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .appt-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(192,122,90,0.12), rgba(192,122,90,0.06));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .package-card h3, .appt-card h3 {
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .duration-tag {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--sage);
+      background: rgba(74,124,111,0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    .appt-duration-tag {
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--warm);
+      background: rgba(192,122,90,0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    .package-cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--sage);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      width: fit-content;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 14px rgba(74,124,111,0.28);
+    }
+
+    .package-cta:hover {
+      background: var(--sage-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(74,124,111,0.35);
+    }
+
+    .appt-cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--warm);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      width: fit-content;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 14px rgba(192,122,90,0.28);
+    }
+
+    .appt-cta:hover {
+      background: #a8603e;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(192,122,90,0.38);
+    }
+
+    .packages-divider {
+      height: 1px;
+      background: rgba(74,124,111,0.1);
+      margin: 3.5rem 0;
+    }
+
+    @media (max-width: 900px) {
+      .packages-grid,
+      .appointments-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* CTA Section */
     .cta-section {
       background: linear-gradient(135deg, var(--sage-dark) 0%, #1e3d35 100%);
@@ -994,6 +1196,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
       <a href="#approach">Approach</a>
       <a href="#media">Media</a>
       <a href="blog.html">Blog</a>
@@ -1279,6 +1482,178 @@
           <p>Featured speaker. Topics: neuroscience of stress, integrative health, and Pro-Consciousness Medicine.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Packages & Programs -->
+  <section class="packages" id="packages">
+    <div class="section-inner">
+      <p class="section-eyebrow">PROGRAMS & PACKAGES</p>
+      <h2 class="section-heading">Work With Dr. Newman</h2>
+      <p class="section-subtext" style="margin-bottom:3.5rem;">Choose the path that fits your goals — from focused intensive programs to ongoing support appointments. Each offering is rooted in neuroscience and integrative medicine.</p>
+
+      <!-- Transformation Programs -->
+      <p class="packages-sub-label">Transformation Programs</p>
+      <div class="packages-grid">
+
+        <!-- Card 1 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+              <path d="M12 8v4l3 3"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <span class="duration-tag">12 Weeks</span>
+          <h3>Executive Resilience &amp; NeuroPerformance Program</h3>
+          <a href="https://buy.stripe.com/eVqbJ21y7ePDcxNbN693y01" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="duration-tag">90 Days</span>
+          <h3>Executive Burnout Recovery System</h3>
+          <a href="https://buy.stripe.com/00wdRa0u3azn1T9eZi93y02" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <span class="duration-tag">3 Months</span>
+          <h3>Intensive Burnout Recovery Program</h3>
+          <a href="https://buy.stripe.com/14AeVegt15f3dBR5oI93y03" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/>
+              <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <span class="duration-tag">6 Weeks</span>
+          <h3>Neuroscience Burnout Recovery</h3>
+          <a href="https://buy.stripe.com/aFafZi6SrbDr55l18s93y04" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <span class="duration-tag">3 Months</span>
+          <h3>Holistic Makeover Package</h3>
+          <a href="https://buy.stripe.com/14A28sa4D6j7eFV3gA93y05" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="package-card" data-reveal>
+          <div class="package-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="3"/>
+              <path d="M12 8v6"/>
+              <path d="M9 11l3 3 3-3"/>
+              <path d="M5 19c0-3.87 3.13-7 7-7s7 3.13 7 7"/>
+            </svg>
+          </div>
+          <span class="duration-tag">6 Months</span>
+          <h3>Lifestyle &amp; Physique Transformation Program</h3>
+          <a href="https://buy.stripe.com/bJe7sM1y7azngO39EY93y06" target="_blank" rel="noopener" class="package-cta">
+            Enroll Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div><!-- /packages-grid -->
+
+      <div class="packages-divider"></div>
+
+      <!-- Appointments -->
+      <p class="packages-sub-label">Appointments</p>
+      <div class="appointments-grid">
+
+        <!-- Appt 1 -->
+        <div class="appt-card" data-reveal>
+          <div class="appt-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C07A5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <span class="appt-duration-tag">60 Min</span>
+          <h3>Consultation Appointment</h3>
+          <a href="https://buy.stripe.com/7sYaEYccLgXLgO33gA93y07" target="_blank" rel="noopener" class="appt-cta">
+            Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Appt 2 -->
+        <div class="appt-card" data-reveal>
+          <div class="appt-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C07A5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <span class="appt-duration-tag">30 Min</span>
+          <h3>Follow-Up Appointment</h3>
+          <a href="https://buy.stripe.com/00waEY0u3dLz1T9aJ293y08" target="_blank" rel="noopener" class="appt-cta">
+            Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Appt 3 -->
+        <div class="appt-card" data-reveal>
+          <div class="appt-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C07A5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+              <path d="M16.5 16.5l2.5 2.5"/>
+            </svg>
+          </div>
+          <span class="appt-duration-tag">60 Min</span>
+          <h3>Follow-Up Appointment</h3>
+          <a href="https://buy.stripe.com/9B6eVe0u3ePD1T9eZi93y09" target="_blank" rel="noopener" class="appt-cta">
+            Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div><!-- /appointments-grid -->
     </div>
   </section>
 
