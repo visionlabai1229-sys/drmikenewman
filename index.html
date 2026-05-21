@@ -134,6 +134,123 @@
       transform: translateY(-1px);
     }
 
+    /* Hamburger button — hidden on desktop */
+    .nav-hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-hamburger:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* Mobile menu drawer */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(360px, 85vw);
+      background: rgba(20,30,18,0.98);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid rgba(124,154,114,0.15);
+      z-index: 99;
+      padding: 6rem 2rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 1rem 0.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s ease, padding-left 0.2s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--sage-light);
+      padding-left: 0.5rem;
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 1.5rem;
+      background: var(--warm);
+      color: white;
+      padding: 0.95rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      border-bottom: none;
+      box-shadow: 0 4px 16px rgba(192,122,90,0.35);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .mobile-menu .mobile-cta:hover {
+      background: #d4896a;
+      padding-left: 1.5rem;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 98;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     /* Hero */
     .hero {
       min-height: 100vh;
@@ -1183,6 +1300,7 @@
       .credentials-grid { grid-template-columns: 1fr 1fr; }
 
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
 
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
@@ -1204,7 +1322,25 @@
       <a href="contact.html">Contact</a>
       <a href="#consult" class="nav-cta">Free Consultation</a>
     </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#packages">Packages</a>
+    <a href="#approach">Approach</a>
+    <a href="#media">Media</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-cta">Free Consultation</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1514,36 +1650,6 @@
           </a>
         </div>
 
-        <!-- Card 2 -->
-        <div class="package-card" data-reveal>
-          <div class="package-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <span class="duration-tag">90 Days</span>
-          <h3>Executive Burnout Recovery System</h3>
-          <a href="https://buy.stripe.com/00wdRa0u3azn1T9eZi93y02" target="_blank" rel="noopener" class="package-cta">
-            Enroll Now
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="package-card" data-reveal>
-          <div class="package-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C9A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-            </svg>
-          </div>
-          <span class="duration-tag">3 Months</span>
-          <h3>Intensive Burnout Recovery Program</h3>
-          <a href="https://buy.stripe.com/14AeVegt15f3dBR5oI93y03" target="_blank" rel="noopener" class="package-cta">
-            Enroll Now
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
         <!-- Card 4 -->
         <div class="package-card" data-reveal>
           <div class="package-icon">
@@ -1700,6 +1806,47 @@
 
 
 <script>
+  // ── Mobile hamburger menu ─────────────────────────────────────
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    mobileMenuOverlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function openMobileMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    mobileMenuOverlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  hamburger.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMobileMenu);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+
   // ── Line reveal for headings ───────────────────────────────────
   const lineRevealEls = document.querySelectorAll('.reveal-line');
   const lineObserver = new IntersectionObserver((entries) => {
