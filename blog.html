@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog — Newman Integrative Health</title>
+  <meta name="description" content="Practical neuroscience for high-performers dealing with burnout, anxiety, and chronic stress — insights from Dr. Michael Newman, neuroscience coach and doctor of natural medicine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — Newman Integrative Health" />
+  <meta property="og:description" content="Practical neuroscience for high-performers dealing with burnout, anxiety, and chronic stress." />
+  <meta property="og:url" content="https://drmikenewman.ca/blog.html" />
+  <meta property="og:image" content="https://drmikenewman.ca/headshot.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -146,6 +153,71 @@
     .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s ease; }
     .footer-links a:hover { color: rgba(255,255,255,0.7); }
     .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav panel */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(28,43,26,0.97);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      padding: 1.5rem 2rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      border-bottom: 1px solid rgba(124,154,114,0.15);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .nav-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      text-align: center;
+      padding: 0.75rem 1.5rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    /* ── MOBILE FIXES ─────────────────────────────────── */
+    @media (max-width: 800px) {
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; }
+      .page-header { padding: 110px 1.25rem 40px; }
+      .blog-grid { padding: 0 1.25rem 60px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -155,13 +227,28 @@
     <div class="nav-links">
       <a href="index.html#about">About</a>
       <a href="index.html#services">Services</a>
+      <a href="index.html#packages">Packages</a>
       <a href="index.html#approach">Approach</a>
       <a href="index.html#media">Media</a>
       <a href="blog.html" class="active">Blog</a>
       <a href="contact.html">Contact</a>
       <a href="index.html#consult" class="nav-cta">Free Consultation</a>
     </div>
+    <button class="nav-hamburger" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="index.html#media">Media</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html#consult" class="nav-cta">Free Consultation</a>
+  </div>
 
   <div class="page-header">
     <p class="page-eyebrow">Insights & Research</p>
@@ -200,5 +287,19 @@
     </div>
   </footer>
 
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
