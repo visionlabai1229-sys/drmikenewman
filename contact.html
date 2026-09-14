@@ -144,7 +144,13 @@
     }
     .contact-item-text strong { display: block; font-weight: 600; color: var(--ink); font-size: 0.85rem; }
 
-    .form-wrapper {
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .form-wrapper, .booking-wrapper {
       background: white;
       border-radius: 16px;
       padding: 2.5rem;
@@ -152,15 +158,35 @@
       box-shadow: 0 4px 16px rgba(28,43,26,0.06), 0 16px 40px rgba(28,43,26,0.04);
     }
 
-    .form-wrapper h2 {
+    .form-wrapper h2, .booking-wrapper h2 {
       font-size: 1.8rem;
       color: var(--ink);
       margin-bottom: 0.5rem;
     }
-    .form-wrapper > p {
+    .form-wrapper > p, .booking-wrapper > p {
       font-size: 0.9rem;
       color: rgba(26,23,20,0.5);
       margin-bottom: 2rem;
+    }
+
+    .booking-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+      background: rgba(124,154,114,0.1);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    #cal-booking-embed {
+      width: 100%;
+      min-height: 630px;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .form-group { margin-bottom: 1.25rem; }
@@ -263,8 +289,12 @@
         position: static;
       }
 
-      .form-wrapper {
+      .form-wrapper, .booking-wrapper {
         padding: 1.5rem;
+      }
+
+      #cal-booking-embed {
+        min-height: 560px;
       }
 
       .form-row {
@@ -315,7 +345,7 @@
     <div class="contact-info">
       <p class="page-eyebrow">Get in Touch</p>
       <h1>Start your journey.</h1>
-      <p>Fill out the intake form and Dr. Newman will follow up within 1–2 business days to discuss next steps.</p>
+      <p>Pick a time below to book your free consultation instantly, or fill out the intake form and Dr. Newman will follow up within 1–2 business days.</p>
       <div class="contact-details">
         <div class="contact-item">
           <div class="contact-item-icon">📍</div>
@@ -341,11 +371,20 @@
       </div>
     </div>
 
-    <div class="form-wrapper">
-      <h2>Intake Form</h2>
-      <p>Takes about 3 minutes. This helps Dr. Newman prepare before your first conversation.</p>
+    <div class="right-column">
 
-      <form action="https://formsubmit.co/msplabs1.0@gmail.com" method="POST">
+      <div class="booking-wrapper">
+        <span class="booking-eyebrow">Recommended</span>
+        <h2>Book a Time Now</h2>
+        <p>Pick a slot that works for you — takes about 30 seconds.</p>
+        <div id="cal-booking-embed"></div>
+      </div>
+
+      <div class="form-wrapper">
+        <h2>Prefer to Share More First?</h2>
+        <p>Fill out the intake form instead. Takes about 3 minutes and helps Dr. Newman prepare before your first conversation.</p>
+
+        <form action="https://formsubmit.co/msplabs1.0@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Intake Form Submission — Newman Integrative Health" />
         <input type="hidden" name="_next" value="https://drmikenewman.ca/contact.html?sent=true" />
         <input type="hidden" name="_captcha" value="false" />
@@ -410,6 +449,8 @@
         <button type="submit" class="submit-btn">Submit Intake Form →</button>
         <p class="form-note">Your information is private and will only be shared with Dr. Newman.</p>
       </form>
+      </div>
+
     </div>
 
   </div>
@@ -440,6 +481,17 @@
         mobileNav.classList.remove('open');
       });
     });
+  </script>
+
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "30min", {origin:"https://cal.com"});
+    Cal.ns["30min"]("inline", {
+      elementOrSelector: "#cal-booking-embed",
+      config: { layout: "month_view" },
+      calLink: "drmikenewman/30min",
+    });
+    Cal.ns["30min"]("ui", { styles: { branding: { brandColor: "#7C9A72" } }, hideEventTypeDetails: false, layout: "month_view" });
   </script>
 
 </body>
